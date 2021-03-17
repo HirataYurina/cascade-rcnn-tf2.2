@@ -27,8 +27,8 @@ see `train_cascade_rcnn.ipynb, train_faster_rcnn.ipynb`, `inspect_model.ipynb` a
 
 - [ ] Muti-Scaling Training
 - [ ] Pseudo Labeling
-- [ ] GHM-C loss
-- [ ] GHM-R loss
+- [x] GHM-C loss
+- [x] GHM-R loss
 - [ ] Statistic Analysis of Dataset
 - [ ] WBF
 - [ ] TTA
