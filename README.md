@@ -32,11 +32,10 @@ see `train_cascade_rcnn.ipynb, train_faster_rcnn.ipynb`, `inspect_model.ipynb` a
 - [ ] Statistic Analysis of Dataset
 - [X] WBF
 - [ ] TTA
-- [ ] CutOut
+- [X] CutOut
 - [X] MixUp
 - [ ] Dilated Conv
-- [ ] SWG
-- [ ] Dilated Conv
+- [X] SAG
 
 # Acknowledgement
 
