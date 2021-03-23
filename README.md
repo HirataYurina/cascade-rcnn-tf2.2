@@ -30,10 +30,11 @@ see `train_cascade_rcnn.ipynb, train_faster_rcnn.ipynb`, `inspect_model.ipynb` a
 - [x] GHM-C loss
 - [x] GHM-R loss
 - [ ] Statistic Analysis of Dataset
-- [ ] WBF
+- [X] WBF
 - [ ] TTA
-- [ ] Image Cut
-- [ ] MixUp
+- [ ] CutOut
+- [X] MixUp
+- [ ] Dilated Conv
 - [ ] SWG
 - [ ] Dilated Conv
 
