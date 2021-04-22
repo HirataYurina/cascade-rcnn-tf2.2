@@ -17,6 +17,8 @@ class AnchorTarget(object):
                  target_stds=(0.1, 0.1, 0.2, 0.2),
                  num_rpn_deltas=256,
                  positive_fraction=0.5,
+                 # TODO: pos_iou_thr = 0.5
+                 # TODO: neg_iou_thr = 0.5
                  pos_iou_thr=0.7,
                  neg_iou_thr=0.3):
         '''Compute regression and classification targets for anchors.
