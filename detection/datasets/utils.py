@@ -7,6 +7,8 @@
 
 import cv2
 import numpy as np
+import tensorflow as tf
+from detection.core.bbox.transforms import delta2bbox
 
 
 ###########################################
@@ -239,3 +241,13 @@ def parse_image_meta(img_meta):
         'scale_factor': scale_factor.astype(np.float32),
         'flip': flip.astype(np.bool),
     }
+
+
+def get_rcnn_proposals(rcnn_probs, rcnn_deltas, rois, means, stds):
+    pos_ids = tf.argmax(rcnn_probs, axis=1, output_type=tf.int32)
+    pos_ids = tf.stack([tf.range(rcnn_probs.shape[0]), pos_ids], axis=1)
+    deltas = tf.gather_nd(rcnn_deltas, pos_ids)
+    bboxes = delta2bbox(rois[:, 1:], deltas, means, stds)
+    proposals = tf.concat([rois[:, 0:1], bboxes], axis=1)
+
+    return proposals
