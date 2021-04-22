@@ -23,6 +23,21 @@ see `train_cascade_rcnn.ipynb, train_faster_rcnn.ipynb`, `inspect_model.ipynb` a
 - [百度网盘](https://pan.baidu.com/s/1I5PGkpvnDSduJnngoWuktQ)
 - [Google Drive](https://drive.google.com/file/d/1yCF-BqqM2x3bqWlJmAyDM-HuhDcLzt0t/view?usp=sharing)
 
+### Make COCO2017 directory
+
+Make your directory as follow.
+
+COCO2017
+
+   --tmp_xml
+   
+   --labelimg2coco.py
+   
+And put your images and xml files in tmp_xml.
+
+Then just run labelimg2coco.py.
+
+
 # ToDO
 
 - [ ] Muti-Scaling Training
