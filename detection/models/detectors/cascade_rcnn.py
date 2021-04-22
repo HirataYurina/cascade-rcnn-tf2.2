@@ -14,6 +14,7 @@ from detection.models.roi_extractors import roi_align
 from detection.core.bbox import bbox_target
 from detection.core.bbox import transforms
 from detection.models.detectors.test_mixins import RPNTestMixin, BBoxTestMixin
+from detection.datasets.utils import get_rcnn_proposals
 
 
 class CascadeRCNN(tf.keras.Model, RPNTestMixin, BBoxTestMixin):
@@ -205,7 +206,7 @@ class CascadeRCNN(tf.keras.Model, RPNTestMixin, BBoxTestMixin):
             self.bbox_head1(pooled_regions, training=training)
 
         # The second detection stage
-        proposals = transforms.delta2bbox(rois, rcnn_deltas, self.RCNN_TARGET_MEANS, self.RCNN_TARGET_STDS)
+        proposals = get_rcnn_proposals(rcnn_probs, rcnn_deltas, rois, self.RCNN_TARGET_MEANS, self.RCNN_TARGET_STDS)
         if training:
             # sampling rois
             rois, rcnn_labels_2, rcnn_label_weights_2, rcnn_delta_targets_2, rcnn_delta_weights_2 = \
@@ -217,7 +218,7 @@ class CascadeRCNN(tf.keras.Model, RPNTestMixin, BBoxTestMixin):
             self.bbox_head2(pooled_regions, training=training)
 
         # The third detection stage
-        proposals = transforms.delta2bbox(rois, rcnn_deltas_2, self.RCNN_TARGET_MEANS, self.RCNN_TARGET_STDS)
+        proposals = get_rcnn_proposals(rcnn_probs_2, rcnn_deltas_2, rois, self.RCNN_TARGET_MEANS, self.RCNN_TARGET_STDS)
         if training:
             # sampling rois
             rois, rcnn_labels_3, rcnn_label_weights_3, rcnn_delta_targets_3, rcnn_delta_weights_3 = \
